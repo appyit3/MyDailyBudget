@@ -1,0 +1,54 @@
+-- Table: public.Category
+
+-- DROP TABLE public."CategoryGroups";
+
+CREATE TABLE public.CategoryGroups
+(
+    CategoryGroupCode character varying(50) COLLATE pg_catalog.default PRIMARY KEY,
+    CategoryGroupName character varying(200) COLLATE pg_catalog.default
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.CategoryGroups
+    OWNER to postgres;
+select * from CategoryGroups;
+
+
+
+-- Table: public.Category
+
+-- DROP TABLE public."Categories";
+
+CREATE TABLE public.Categories
+(
+    CategoryCode character varying(50) COLLATE pg_catalog.default PRIMARY KEY,
+    CategoryName character varying(200) COLLATE pg_catalog.default,
+    CategoryGroupCode character varying(50) NOT NULL ,
+	FOREIGN KEY (CategoryGroupCode) REFERENCES CategoryGroups(CategoryGroupCode)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.Categories
+    OWNER to postgres;
+
+select * from Categories;
+
+-- Table: public.Expenses
+
+-- DROP TABLE public."Expenses";
+
+CREATE TABLE public.Expenses
+(
+    ExpenseId bigint,
+    CategoryCode character varying(50) NOT NULL REFERENCES Categories(CategoryCode),
+    Amount numeric(12,2)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.Expenses
+    OWNER to postgres;
+	
+select * from Expenses
