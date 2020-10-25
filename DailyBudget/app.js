@@ -1,5 +1,5 @@
 var express = require('express');
-//var debug = require('debug')('app');
+var debug = require('debug')('app');
 var morgan = require('morgan');
 
 var app = express();
@@ -11,5 +11,5 @@ app.get('/', function(req, res){
 })
 
 app.listen(3000, function(){
-    console.debug('listen on port 3000');
+    debug('listen on port 3000');
 });
