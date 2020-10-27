@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "set DEBUG=app & node app.js"
+    "windebug": "set DEBUG=app & node app.js",
+    "lindebug": "DEBUG=* node app.js"
   },
   "author": "",
   "license": "ISC",
