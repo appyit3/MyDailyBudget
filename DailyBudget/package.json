@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "windebug": "set DEBUG=app & node app.js",
-    "lindebug": "DEBUG=* node app.js"
+    "lindebug": "DEBUG=* node app.js",
+    "lint": "eslint app.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,10 @@
     "express": "4.17.1",
     "inspect": "0.0.2",
     "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
   }
 }
