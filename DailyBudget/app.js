@@ -1,15 +1,30 @@
-var express = require('express');
-var debug = require('debug')('app');
-var morgan = require('morgan');
+const express = require('express');
+const debug = require('debug')('app');
+const morgan = require('morgan');
 
-var app = express();
+const app = express();
+const port = process.env.PORT || 3000;
+const categoryRouter = express.Router();
+
 app.use(morgan('combined'));
 
-app.get('/', function(req, res){
-    console.debug('response');
-    res.send('hello yoll');
-})
+categoryRouter.route('/')
+  .get((req, res) => {
+    res.send('categories');
+  });
 
-app.listen(3000, function(){
-    debug('listen on port 3000');
+categoryRouter.route('/categoryGroups')
+  .get((req, res) => {
+    res.send('categoryGroups');
+  });
+
+app.use('/categories', categoryRouter);
+
+app.get('/', (req, res) => {
+  debug('response');
+  res.send('hello yoll');
+});
+
+app.listen(port, () => {
+  debug(`listen on port ${port}`);
 });
